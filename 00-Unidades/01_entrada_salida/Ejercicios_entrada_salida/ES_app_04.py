@@ -33,7 +33,11 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        nombre_alumno = prompt("Titulo","Ingrese un nombre")
+        #Con esto verificamos que la grilla de nombre este vacia:
+        self.txt_nombre.delete(0,"end")
+        #Y con esto agregamos el nombre que ingresamos en el prompt, a partir de la primera posicion:
+        self.txt_nombre.insert(0,nombre_alumno)
         
     
 if __name__ == "__main__":
