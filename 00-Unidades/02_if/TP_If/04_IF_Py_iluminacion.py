@@ -5,17 +5,17 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Tomas
+apellido: Fernandez
 ---
 TP: IF_Iluminacion
 ---
 Enunciado:
 Todas las lámparas están  al mismo precio de $800 pesos final.
-		A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 
-		B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
-		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
-		D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
+		A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 2400$ 
+		B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % (2400) y si es de otra marca el descuento es del 30%(2800).
+		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % (2400) y si es de otra marca el descuento es del 20% (2560).
+		D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15% (2040), si es  “FelipeLamparas” se hace un descuento del 10 % (2160) y si es de otra marca un 5%.(2280)
 		E.	Si el importe final con descuento suma más de $4000  se obtien un descuento adicional de 5%.
 '''
 
@@ -43,7 +43,58 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        marca = self.combobox_marca.get()
+        cantidad = self.combobox_cantidad.get()
+        cantidad = int(cantidad)
+        # Todas las lámparas están  al mismo precio de $800 pesos final.
+		# A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 2400$ 
+		# B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % (2400) y si es de otra marca el descuento es del 30%(2800).
+		# C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % (2400) y si es de otra marca el descuento es del 20% (2560).
+		# D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15% (2040), si es  “FelipeLamparas” se hace un descuento del 10 % (2160) y si es de otra marca un 5%.(2280)
+		# E.	Si el importe final con descuento suma más de $4000  se obtien un descuento adicional de 5%.
+        lampara = 800
+        descuento = 0
+        importe = 0
+        
+        if cantidad >= 6:
+            descuento = 0.50
+        elif cantidad == 5:
+            if marca == "ArgentinaLuz":
+                descuento = 0.40
+            else:
+                descuento = 0.30
+        elif cantidad == 4:
+            if marca in ["ArgentinaLuz","FelipeLamparas"]:
+                descuento = 0.25
+            else:
+                descuento = 0.20
+        elif cantidad == 3:
+            if marca == "ArgentinaLuz":
+                descuento = 0.15
+            elif marca == "FelipeLamparas":
+                descuento = 0.10
+            else:
+                descuento = 0.05
+        else:
+            lampara
+            
+        descuento = descuento * lampara
+        lampara = lampara - descuento
+        importe = lampara * cantidad
+        
+        if importe > 4000:
+            descuento = 0.05 * lampara
+            lampara = lampara - descuento
+            importe = lampara * cantidad
+            
+        alert("TOTAL",importe)
+        
+            
+            
+                
+            
+        
+        
         
     
 if __name__ == "__main__":

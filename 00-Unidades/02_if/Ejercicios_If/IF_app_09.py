@@ -6,8 +6,8 @@ import customtkinter
 import random
 
 '''
-nombre:
-apellido:
+nombre: Tomas 
+apellido: Fernandez
 ---
 Ejercicio: if_09
 ---
@@ -27,7 +27,8 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        numero_random = random.randint(0,10)
+        alert("Random",numero_random)
         
 
 if __name__ == "__main__":
