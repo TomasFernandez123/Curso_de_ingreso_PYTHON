@@ -44,12 +44,12 @@ class App(customtkinter.CTk):
         # Entre 160 cm y 179 cm: Escolta
         # Entre 180 cm y 199 cm: Alero
         # 200 cm o más: Ala-Pívot o Pívot
-        altura = float(altura)
-        if altura >= 200:
+        altura_float = float(altura)
+        if altura_float >= 200:
             mensaje = "Ala-Pívot o Pívot"
-        elif altura >=180 and altura <=199:
+        elif altura_float >=180:
             mensaje = "Alero"
-        elif altura >= 160 and altura <= 179:
+        elif altura_float >= 160:
               mensaje = "Escolta"
         else:
             mensaje = "Base"

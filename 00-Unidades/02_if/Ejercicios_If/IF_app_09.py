@@ -27,7 +27,7 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        numero_random = random.randint(0,10)
+        numero_random = random.randint(1,10)
         alert("Random",numero_random)
         
 

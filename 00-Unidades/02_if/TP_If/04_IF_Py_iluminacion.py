@@ -87,7 +87,7 @@ class App(customtkinter.CTk):
             lampara = lampara - descuento
             importe = lampara * cantidad
             
-        alert("TOTAL",importe)
+        alert("TOTAL",f"El importe total es de ${importe}")
         
             
             

@@ -36,7 +36,7 @@ class App(customtkinter.CTk):
         if nota >= 6 and nota <= 10:
             mensaje = f"Promoción directa, la nota es {nota}"
         elif nota >= 4 and nota <= 5:
-            mensaje = f"Aprobado la nota es {nota}"
+            mensaje = f"Aprobado, la nota es {nota}"
         else:
             mensaje = f"Desaprobado, la nota es {nota}"
             

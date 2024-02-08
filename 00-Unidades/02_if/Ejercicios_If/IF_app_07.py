@@ -18,11 +18,6 @@ si es o no posible que la persona concurra a votar en base a la información
 suministrada.
 '''
 
-#argentinos de mas 16 años NATIVOS = PUEDEN
-#argentinos > 18 NATURALIZADOS = PUEDEN
-#Argentinos < 16 = NO
-#Argentinos < 18 Naturalizdos = No
-
 class App(customtkinter.CTk):
     
     def __init__(self):
@@ -51,9 +46,12 @@ class App(customtkinter.CTk):
         edad = int(edad)
         estado = self.combobox_tipo.get()
         
-        if estado == "NATIVO" and edad >= 16:
-            mensaje = "Puede votar"
-        elif estado == "NATURALIZADO" and edad >= 18:
+        #argentinos de mas 16 años NATIVOS = PUEDEN
+        #argentinos > 18 NATURALIZADOS = PUEDEN
+        #Argentinos < 16 = NO
+        #Argentinos < 18 Naturalizdos = No
+
+        if (estado == "NATIVO" and edad >= 16) or  (estado == "NATURALIZADO" and edad >= 18):
             mensaje = "Puede votar"             
         else:
             mensaje = "No puede votar"

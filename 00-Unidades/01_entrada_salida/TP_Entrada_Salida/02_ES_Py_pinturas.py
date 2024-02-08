@@ -49,10 +49,8 @@ class App(customtkinter.CTk):
     
     def btn_convertir_c_f_on_click(self):
         centigrados = self.txt_temperatura_c.get()
-        fahrenheit = self.txt_temperatura_f.get()
         
         centigrados = float(centigrados)
-        fahrenheit = float(fahrenheit)
         
         # (0 °C × 9/5) + 32 = 32 °F
         convertir_c_f = round((centigrados * 9/5) + 32,2)
@@ -63,10 +61,8 @@ class App(customtkinter.CTk):
         
 
     def btn_convertir_f_c_on_click(self):
-        centigrados = self.txt_temperatura_c.get()
         fahrenheit = self.txt_temperatura_f.get()
         
-        centigrados = float(centigrados)
         fahrenheit = float(fahrenheit)
         
         convertir_f_c = round((fahrenheit - 32) * 5/9,2)
