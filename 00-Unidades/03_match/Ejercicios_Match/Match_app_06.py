@@ -6,8 +6,8 @@ import customtkinter
 
 
 '''
-nombre:
-apellido:
+nombre: Tomas
+apellido: Fernandez
 ---
 Ejercicio: Match_06
 ---
@@ -39,7 +39,31 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        hora = self.txt_hora.get()
+        hora_int = int(hora)
+        #Nose si esta permitido que usemos if dentro de los case, entonces lo hice de esta forma:
+        # match hora_int:
+        #     case 7|8|9|10|11:
+        #         mensaje = "Es de mañana"
+        #     case 12|13|14|15|16|17|18|19:
+        #         mensaje = "Es de tarde"
+        #     case 0|1|2|3|4|5|6|20|21|22|23|24:
+        #         mensaje = "Es de noche"
+        #     case _:
+        #         mensaje = "La hora no existe"
+                
+        #En caso que este permitido quedaria algo asi:
+        match hora_int:
+            case x if (0 <= x <= 6) or (20 <= x <= 24):
+                mensaje = "Es de noche"
+            case x if x >= 12:
+                mensaje = "Es de tarde"
+            case x if x >= 7:
+                mensaje = "Es de mañana"
+            case _:
+                mensaje = "La hora no existe"             
+                 
+        alert("HORA",mensaje)
     
     
 if __name__ == "__main__":

@@ -6,8 +6,8 @@ import customtkinter
 
 
 '''
-nombre:
-apellido:
+nombre: Tomas
+apellido: Fernandez
 ---
 Ejercicio: Match_08
 ---
@@ -34,8 +34,19 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
-    
+        destino = self.combobox_destino.get()
+        
+        match destino:
+            case "Bariloche":
+                mensaje = "Frío"
+            case "Mar del plata":
+                mensaje = "Calor"
+            case "Cataratas":
+                mensaje = "Calor"
+            case "Ushuaia":
+                mensaje = "Frío"
+                
+        alert("TEMPERATURA",f"En {destino} mayormente hace {mensaje}")    
     
 if __name__ == "__main__":
     app = App()

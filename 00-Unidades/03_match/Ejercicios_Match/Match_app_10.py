@@ -6,8 +6,8 @@ import customtkinter
 
 
 '''
-nombre:
-apellido:
+nombre: Tomas
+apellido: Fernandez
 ---
 Ejercicio: Match_10
 ---
@@ -47,7 +47,43 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        estacion = self.combobox_estaciones.get()
+        destino = self.combobox_destino.get()
+    #   caso contrario mostrar “No se viaja”. 
+    #   Si es invierno: solo se viaja a Bariloche
+    #   Si es verano: se viaja a Mar del plata y Cataratas
+    #   Si es otoño: se viaja a todos los lugares
+    #   Si es primavera: se viaja a todos los lugares menos Bariloche
+    
+        match estacion:
+            case "Invierno":
+                match destino:
+                    case "Bariloche":
+                        mensaje = "Se viaja"
+                    case _:
+                        mensaje = "No se viaja"
+            
+            case "Verano":
+                match destino:
+                    case "Mar del plata" | "Cataratas":
+                        mensaje = "Se viaja"
+                    case _:
+                        mensaje = "No se viaja"
+            
+            case "Otoño":
+                mensaje = "Se viaja"
+                
+            case "Primavera":
+                match destino:
+                    case "Bariloche":
+                        mensaje = "No se viaja"
+                    case _ :
+                        mensaje = "Se viaja"
+
+        
+        alert("VIAJE",mensaje)
+                
+        
             
     
 if __name__ == "__main__":

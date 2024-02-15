@@ -6,8 +6,8 @@ import customtkinter
 
 
 '''
-nombre:
-apellido:
+nombre: Tomas
+apellido: Fernandez
 ---
 Ejercicio: while_03
 ---
@@ -29,7 +29,11 @@ class App(customtkinter.CTk):
         
     
     def btn_pedir_clave_on_click(self):
-        pass
+        while True:
+            contraseña = prompt("Contraseña","Ingrese la contraseña: ")
+            if contraseña == "utn750":
+                break
+
     
     
 if __name__ == "__main__":

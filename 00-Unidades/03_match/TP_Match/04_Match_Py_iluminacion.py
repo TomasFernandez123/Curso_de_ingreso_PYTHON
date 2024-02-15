@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Tomas
+apellido: Fernandez
 ---
 TP: Iluminación
 ---
@@ -43,8 +43,56 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        marca = self.combobox_marca.get()
+        cantidad = self.combobox_cantidad.get()
+        cantidad = int(cantidad)
+        # Todas las lámparas están  al mismo precio de $800 pesos final.
+		# A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 2400$ 
+		# B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % (2400) y si es de otra marca el descuento es del 30%(2800).
+		# C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % (2400) y si es de otra marca el descuento es del 20% (2560).
+		# D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15% (2040), si es  “FelipeLamparas” se hace un descuento del 10 % (2160) y si es de otra marca un 5%.(2280)
+		# E.	Si el importe final con descuento suma más de $4000  se obtien un descuento adicional de 5%.
+        lampara = 800
+        descuento = 0
+        importe = 0
         
+        match cantidad:
+            case 1 | 2:
+                descuento = 0
+            case 3:
+                match marca:
+                    case "ArgentinaLuz":
+                        descuento = 0.15
+                    case "FelipeLamparas":
+                        descuento = 0.10
+                    case _:
+                        descuento = 0.05
+            case 4:
+                match marca:
+                    case "ArgentinaLuz" | "FelipeLamparas":
+                        descuento = 0.25
+                    case _:
+                        descuento = 0.20
+            case 5:
+                match marca:
+                    case "ArgentinaLuz":
+                        descuento = 0.40
+                    case _:
+                        descuento = 0.30
+            case _:
+                descuento = 0.50
+        
+            
+        descuento_aplicable = descuento * lampara
+        lampara = lampara - descuento_aplicable
+        importe = lampara * cantidad
+        
+        if importe > 4000:
+            descuento_aplicable = 0.05 * lampara
+            lampara = lampara - descuento_aplicable
+            importe = lampara * cantidad
+            
+        alert("TOTAL",f"""Usted a comprado {cantidad} lampara/s, se te aplico un descuento del {descuento*100}% TOTAL: ${importe}""")
     
 if __name__ == "__main__":
     app = App()

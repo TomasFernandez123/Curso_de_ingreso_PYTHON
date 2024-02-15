@@ -75,8 +75,7 @@ class App(customtkinter.CTk):
                 descuento = 0.10
             else:
                 descuento = 0.05
-        else:
-            lampara
+        
             
         descuento = descuento * lampara
         lampara = lampara - descuento

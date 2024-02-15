@@ -26,7 +26,9 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, pady=20, columnspan=2, sticky="nsew")
 
     def btn_mostrar_on_click(self):
-        alert("Error","Esto no anda, funciona")
+        dolar_oficial = prompt("Dolar Oficial")
+        dolar_blue = prompt("Dolar Blue")
+        dolar_blue_int  
 
 
 if __name__ == "__main__":
