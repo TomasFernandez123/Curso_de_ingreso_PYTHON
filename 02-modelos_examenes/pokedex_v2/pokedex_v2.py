@@ -26,7 +26,7 @@ import warnings
 #? El profesor OAK de pueblo paleta quiere que construyas un segundo modelo prototipico 
 #? de pokedex con 10 pokemones de prueba.
 '''
-NOMBRE = '' # Completa tu nombre completo solo en esa variable
+NOMBRE = 'Tomas' # Completa tu nombre completo solo en esa variable
 '''
 #?################ ENUNCIADO #################
 Para ello deberas programar el boton "Cargar Pokedex" para poder cargar 10 pokemones.

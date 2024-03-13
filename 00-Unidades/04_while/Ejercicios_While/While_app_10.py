@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Tomas
+apellido: Fernandez
 ---
 Ejercicio: while_10
 ---
@@ -20,6 +20,11 @@ Luego calcular:
     D. Cantidad de números negativos ingresados
     E. Cantidad de ceros
     F. Diferencia entre la cantidad de los números positivos ingresados y los negativos
+    
+    #Agregado con el profe german:
+    G. El maximo 
+    H: El minimo, mostrando en que número de iteración se encontró.
+    I: El minimo positivo
 
 Informar los resultados mediante alert()
 
@@ -37,7 +42,61 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        cantidas_positivos = 0
+        cantidad_negativos = 0
+        cantidad_ceros = 0
+        suma_positivos = 0
+        suma_negativos = 0
+        
+        maximo = 0
+        minimo = 0
+        contador = 0
+        
+        minimo_positivo = 0
+                
+        while True:
+            numero = prompt("UTN","Ingrese numero:")
+            if numero == None:
+                break
+            
+            numero = float(numero)
+            
+            contador += 1
+            
+            if numero > 0:
+                suma_positivos +=  numero
+                cantidas_positivos += 1
+                
+                if numero < minimo_positivo or contador == 1:
+                    minimo_positivo = numero
+                    
+            elif numero == 0:
+                cantidad_ceros += 1
+            else:
+                suma_negativos += numero
+                cantidad_negativos += 1
+                
+            
+            if numero > maximo or contador == 1:
+                maximo = numero
+                
+            if numero < minimo or contador == 1:
+                minimo = numero
+                posicion_encontrada = contador
+                    
+        diferencia_positivos_negativos = abs(cantidas_positivos - cantidad_negativos)
+        
+        alert("UTN",f"""
+    A. La suma acumulada de los negativos: {suma_negativos}
+    B. La suma acumulada de los positivos: {suma_positivos}
+    C. Cantidad de números positivos ingresados: {cantidas_positivos}
+    D. Cantidad de números negativos ingresados: {cantidad_negativos}
+    E. Cantidad de ceros: {cantidad_ceros}
+    F. Diferencia entre la cantidad de los números positivos 
+       ingresados y los negativos: {diferencia_positivos_negativos}
+    G. Numero maximo encontrado: {maximo}
+    H. Numero minimo encontrado: {minimo}, en la iteracion: {posicion_encontrada}
+    I. El minimo positivo es: {minimo_positivo}""")
 
     
 if __name__ == "__main__":

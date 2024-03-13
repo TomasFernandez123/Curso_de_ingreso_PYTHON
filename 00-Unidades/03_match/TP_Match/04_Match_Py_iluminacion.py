@@ -87,6 +87,8 @@ class App(customtkinter.CTk):
         lampara = lampara - descuento_aplicable
         importe = lampara * cantidad
         
+        #Nose como hacer esta parte con case
+        
         if importe > 4000:
             descuento_aplicable = 0.05 * lampara
             lampara = lampara - descuento_aplicable

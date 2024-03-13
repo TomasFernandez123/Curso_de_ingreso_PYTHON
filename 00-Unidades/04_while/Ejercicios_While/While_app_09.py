@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Tomas
+apellido: Fernandez
 ---
 Ejercicio: while_09
 ---
@@ -40,7 +40,33 @@ class App(customtkinter.CTk):
                               columnspan=2, sticky="nsew")
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        #Vamos a implementar el uso de flags para saber si estamos en la primera iteracion, ya que, justo en este caso no hay necesidad de usar un contador y seria un gasto extra de recursos (contador +=1)
+        bandera_primer_ingreso = False
+        maximo = 0
+        minimo = 0
+               
+        while True:
+            numeros = prompt("UTN","Ingrese numero:")
+            if numeros == None:
+                break
+            
+            numeros = int(numeros)
+                
+            if numeros > maximo or bandera_primer_ingreso == False:
+                maximo = numeros
+            if numeros < minimo or bandera_primer_ingreso == False:
+                minimo = numeros           
+                #Si ya cambiamos el estado de la bandera quiere decir que ya pasamos la primera iteracion.            
+                bandera_primer_ingreso = True
+        
+        
+                        
+        self.txt_maximo.delete(0,"end")
+        self.txt_minimo.delete(0,"end")
+        
+        self.txt_maximo.insert(0,f"Max: {maximo}")
+        self.txt_minimo.insert(0,f"Min: {minimo}")
+                        
 
 
 if __name__ == "__main__":

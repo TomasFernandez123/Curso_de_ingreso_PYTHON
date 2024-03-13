@@ -27,7 +27,7 @@ import customtkinter
 #? para ello habra que construir un programita que ayude con esa cuestion y 
 #? recobrar la paz.
 '''
-NOMBRE = '' # Completa tu nombre completo solo en esa variable
+NOMBRE = 'Tomas Fernandez' # Completa tu nombre completo solo en esa variable
 '''
 #?################ ENUNCIADO #################
 Es por eso que deberas programar el boton "Cargar Transformer" para poder cargar 10 robots.
@@ -73,10 +73,6 @@ class App(customtkinter.CTk):
 
         self.label_title = customtkinter.CTkLabel(master=self, text=f"Cybertron Manager de {NOMBRE}", font=("Arial", 20, "bold"))
         self.label_title.grid(row=0, column=0, columnspan=2, padx=20, pady=10)
-        
-        self.image = tk.PhotoImage(file='./modelos_examenes/transformers_v1/UTN_Transformers_App_v1.png')
-        self.top_banner = customtkinter.CTkLabel(master = self, image = self.image, text = '')
-        self.top_banner.grid_configure(row = 1, column = 0, padx = 20, pady = 5, columnspan = 2, rowspan = 1, sticky = 'we')
 
         self.btn_cargar = customtkinter.CTkButton(master=self, text="Cargar Transformers", command=self.btn_cargar_transformer_on_click)
         self.btn_cargar.grid(row=2, pady=10, columnspan=2, sticky="nsew")
@@ -90,49 +86,43 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Mostrar Ambos Informes", command=self.btn_mostrar_todos_informes_on_click)
         self.btn_mostrar.grid(row=5, pady=10, columnspan=2, sticky="nsew")
 
-        # Datos de prueba para boton mostrar
-        # Cargar aca los transformers
-        self.lista_nombre_transformers = [
-            "OptimusPrime", "OptimusPrimal", "Megatron", "Airazor", "Cheetor",
-            "Wheeljack", "Starscream", "Bumblebee", "Mirage", "Scourge", "Megatron"
-        ]
-        self.lista_poder_transformers = [
-            200, 199, 198, 140, 150,
-            130, 120, 145, 125, 199, 190
-        ]
-        self.lista_bando_transformers = [
-            "Autobot", "Maximal", "Descepticon", "Maximal", "Maximal",
-            "Autobot", "Descepticon", "Autobot", "Autobot", "Terrorcon", "Predacon"
-        ]
-        self.lista_altura_transformers = [
-            30, 25, 35, 20, 22,
-            20, 16, 12, 15, 40, 34
-        ]
-        self.lista_peso_transformers = [
-            300, 390, 450, 250, 175,
-            200, 180, 105, 90, 350, 420
-        ]
-
-
     def btn_cargar_transformer_on_click(self):
-        pass
-        
+        # * El nombre del transformer
+        # * El bando del transformer (Autobot, Maximal, Predacon, Descepticon, Terrorcon)
+        # * La cantidad de poder (validar que sea mayor a 50 y menor a 200)
+        # * La altura (en metros enteros [sin decimales]) del transformer (Validar que sea mayor a 5 y menor a 50)
+        # * El peso (en toneladas) del transformer (Validar que sea mayor a 20 y menor a 500)
+        for i in range(0,10):
+            nombre_transformer = input("Ingresa el nombre: ")
+            bando_transformer = input("Ingrese su bando(Autobot, Maximal, Predacon, Descepticon, Terrorcon): ")
+            while bando_transformer not in ["Autobot", "Maximal", "Predacon", "Descepticon", "Terrorcon"]:
+                bando_transformer = input("Reingrese su bando(Autobot, Maximal, Predacon, Descepticon, Terrorcon): ")
+            cantidad_poder = input("Ingrese su cantidad de poder: ")
+            cantidad_poder = int(cantidad_poder)
+            while cantidad_poder < 50 or cantidad_poder > 200:
+                cantidad_poder = input("Reingrese su cantidad de poder: ")
+                cantidad_poder = int(cantidad_poder)
+            altura_transformer = input("Ingrese la altura en metro entero: ")
+            altura_transformer = int(altura_transformer)
+            while altura_transformer < 5 or altura_transformer > 50:
+                altura_transformer = input("Ingrese la altura en metro entero: ")
+                altura_transformer = int(altura_transformer)
+            peso_transformer = input("Ingrese el peso en toneladas: ")
+            peso_transformer = int(peso_transformer)
+            while peso_transformer < 20 or peso_transformer > 500:
+                peso_transformer = input("Ingrese el peso en toneladas: ")
+                peso_transformer = int(peso_transformer)
 
     def btn_mostrar_informe_1_on_click(self):
         pass
-
     
     def btn_mostrar_informe_2_on_click(self):
         pass
-
     
     def btn_mostrar_todos_informes_on_click(self):
         self.btn_mostrar_informe_1_on_click()
         self.btn_mostrar_informe_2_on_click()
 
-            
-
-    
 if __name__ == "__main__":
     warnings.filterwarnings("ignore")
     app = App()

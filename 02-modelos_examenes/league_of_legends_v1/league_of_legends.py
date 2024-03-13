@@ -26,7 +26,7 @@ import warnings
 #? Un jugador de League of Legends tiene un fin de semana libre y 
 #? va a jugar partidas hasta que se canse.
 '''
-NOMBRE = '' # Completa tu nombre completo solo en esa variable
+NOMBRE = 'Tomas Fernandez' # Completa tu nombre completo solo en esa variable
 '''
 #?################ ENUNCIADO #################
 Para ello deberas programar el boton "Cargar Campeones" para poder cargar 10 personajes del juego.
